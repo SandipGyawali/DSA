@@ -29,7 +29,7 @@ Stack can be implemented in two ways
 //Array Implementation of Stack
 public class Stack {
 //    declaration of stack and top variable
-    private int[] stack; //reference to array
+    protected int[] stack; //reference to array
     private int top;  //top variable definition
 
 //    defines the instance of the private variable duding run time.
