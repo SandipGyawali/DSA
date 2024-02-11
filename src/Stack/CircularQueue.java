@@ -2,11 +2,10 @@ package Stack;
 import java.util.*;
 
 public class CircularQueue {
-    private int[] queue;
-    private static final int DEFAULT_SIZE = 10;
-    int front = 0;  //front pointer to keep track of the starting point of the queue
-    int end = 0; //queue pointer pointing towards the end
-    int size = 0;
+    protected int[] queue;
+    private static final int DEFAULT_SIZE = 5;
+    int end = -1;  //queue pointer pointing to the start and end
+    int front = -1;  //you can add or not adding is also ok
 
     public CircularQueue(){
         this(DEFAULT_SIZE);
@@ -16,65 +15,57 @@ public class CircularQueue {
         this.queue = new int[size];
     }
 
-    public boolean isFull(){
-//        end may not equal the queue.length because it's circular end and start position changes frequently in circular queue
-        return size == queue.length;
+    boolean isFull(){
+        return ((end + 1) % DEFAULT_SIZE) == front;
     }
 
-    public boolean insert(int item){
+    boolean isEmpty(){
+        return front == -1 && end == -1;
+    }
+
+    public boolean enqueue(int val) throws ArrayIndexOutOfBoundsException{
+//        first queue is full or not condition
         if(isFull()){
-            return false;
+            throw new IndexOutOfBoundsException("Queue is full, overflow");
+        }else if(isEmpty()){
+            front = end = 0;
+            queue[end] = val;
+        }else{
+            end = (end + 1) % DEFAULT_SIZE;
+            queue[end] = val;
         }
-        queue[end++] = item;
-        end = end % queue.length;
         return true;
     }
 
-    public boolean isEmpty(){
-        return end == 0;
-    }
-
-    public int remove(){
+    public boolean dequeue() throws ArrayIndexOutOfBoundsException{
         if(isEmpty()){
-            throw new Error("Cannot remove the element from the empty queue");
+            throw new ArrayIndexOutOfBoundsException("Queue is empty, underflow");
+        }else if(front == end){
+            front = end = -1;
+        }else{
+            front = (front + 1) % DEFAULT_SIZE;
         }
-        int removed = queue[front++];
-
-        front = front % queue.length;
-        size--;
-
-        return removed;
+        return true;
     }
 
-    public int front(){
+    public void display(){
         if(isEmpty()){
-            throw new Error("Queue is empty, cannot get the element");
-        }
-
-        return queue[front];
-    }
-
-    void display(){
-        if (isEmpty()) {
-            System.out.println("Empty");
+            System.out.println("Queue is empty");
             return;
         }
+
         int i = front;
-        do {
-            System.out.print(queue[i] + " -> ");
-            i++;
-            i %= queue.length;
-        } while (i != end);
-        System.out.println("END");
+        while(i != end){
+            System.out.print(queue[i] + " ");
+            i = (i + 1) % DEFAULT_SIZE;
+        }
     }
 
-    public static void main(String[] args) {
-        CircularQueue queue = new CircularQueue();
-        queue.insert(5);
-        queue.insert(10);
-        queue.insert(11);
-        queue.insert(12);
-        queue.insert(20);
-        queue.display();
+    public int peek(){
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+            System.exit(1);
+        }
+        return queue[front];
     }
 }
