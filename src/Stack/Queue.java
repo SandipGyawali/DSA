@@ -23,7 +23,8 @@ import java.util.*;
 public class Queue {
     protected int[] queue;
     private static final int DEFAULT_SIZE = 10;
-    int end = 0; //queue pointer pointing towards the end
+    int end = -1;  //queue pointer pointing to the start and end
+    int front = -1;  //you can add or not adding is also ok
 
     public Queue(){
         this(DEFAULT_SIZE);
@@ -33,60 +34,62 @@ public class Queue {
         this.queue = new int[size];
     }
 
-    public boolean isFull(){
+    boolean isFull(){
         return end == queue.length - 1;
     }
 
-    public boolean isEmpty(){
-        return end == 0;
+    boolean isEmpty(){
+        return front == -1 && end == -1;
     }
 
-    public boolean insert(int item){
+    public boolean enqueue(int val) throws IndexOutOfBoundsException{
         if(isFull()){
-            return false;
+            throw new IndexOutOfBoundsException("Queue is full, overflow");
+        }else if(front == -1 && end == -1){
+            front = end = 0;
+            queue[end] = val;
+        }else{
+            end++;
+            queue[end] = val;
         }
-        queue[end++] = item;
         return true;
     }
 
-    public int remove(){
+    public boolean dequeue() throws ArrayIndexOutOfBoundsException{
         if(isEmpty()){
-            throw new Error("Cannot remove the element from the empty queue");
+            throw new ArrayIndexOutOfBoundsException("Queue is empty, underflow");
+        }else if(front == end){
+            front = end = -1;
+        }else{
+            front++;
         }
-        int removed = queue[0];
-
-//      while removing, remove the first element and then shift all the element by one
-//      the above case is the queue without using the front ptr variable.
-//      if front and rear ptr variable is defined then shift the pointer by one.
-//      Note: don't forget the case of the queue wrapping or index overflow where the queue has the un-used space at the beginning of the array
-//      takes O(n) time to remove the element and shift the element to one step forward
-        for(int i = 0; i < end; i++){
-            queue[i] = queue[i + 1];
-        }
-
-//        now the item has been removed the rear pointer should also be decreased.
-        end--;
-        return removed;
+        return true;
     }
 
-    public int front(){
+    public void display(){
         if(isEmpty()){
-            throw new Error("Queue is empty, cannot get the element");
+            System.out.println("Queue is empty");
+            return;
         }
 
-        return queue[0];
+        for(int i = front; i <= end; i++){
+            System.out.print(queue[i] + " ");
+        }
     }
 
-    void display(){
-        System.out.println(Arrays.toString(queue));
+    public int peek(){
+        if(isEmpty()){
+            System.out.println("Queue is empty");
+            System.exit(1);
+        }
+        return queue[front];
     }
 
     public static void main(String[] args){
         Queue queue = new Queue();
-        queue.insert(5);
-        queue.insert(10);
-        queue.remove();
-        queue.front();
+        queue.enqueue(5);
+        queue.enqueue(10);
+        queue.dequeue();
         queue.display();
     }
 }
