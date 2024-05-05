@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57a838f2-89d2-4dad-82ec-662e1144b9ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Recursion/Maize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/MergeSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/MergeSortInPlace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/Permutation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/QuickSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/Recursion1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/Recursion2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/SubSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Recursion/SubSetArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/BubbleSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/CountSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/CyclicSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/InsertionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/SelectionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sorting/SelectionSort_Rec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Stack/ReverseStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tree/AVL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tree/BinarySearchTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sorting/Heap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sorting/ShellSort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +43,7 @@
     &quot;last_opened_file_path&quot;: &quot;C:/DriveD/DSA&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.AVL">
+  <component name="RunManager" selected="Application.Heap">
     <configuration name="AVL" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tree.AVL" />
       <module name="DSA" />
@@ -73,12 +57,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AscendingPriorityQueue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Stack.AscendingPriorityQueue" />
+    <configuration name="Heap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Sorting.Heap" />
       <module name="DSA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Stack.*" />
+          <option name="PATTERN" value="Sorting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,11 +105,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Heap" />
         <item itemvalue="Application.AVL" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.MergeSort" />
         <item itemvalue="Application.StackLinkedList" />
-        <item itemvalue="Application.AscendingPriorityQueue" />
       </list>
     </recent_temporary>
   </component>
